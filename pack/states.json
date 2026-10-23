@@ -1,0 +1,651 @@
+{
+ "states": [
+  {
+   "id": "screen",
+   "name": "Screen",
+   "type": "class",
+   "description": "Which screen the game shows: the START button (title), the PLAY AGAIN button (time up), or neither (playing).",
+   "classes": [
+    {
+     "value": "title",
+     "name": "Title",
+     "color": "sky"
+    },
+    {
+     "value": "playing",
+     "name": "Playing",
+     "color": "green"
+    },
+    {
+     "value": "over",
+     "name": "Time up",
+     "color": "amber"
+    }
+   ],
+   "rois": [
+    {
+     "id": "button",
+     "name": "The button",
+     "box": [
+      490,
+      470,
+      300,
+      100
+     ]
+    }
+   ],
+   "source": {
+    "kind": "rule",
+    "rule": "template",
+    "params": {
+     "roi": "button",
+     "search": 3,
+     "match_min": 0.75,
+     "margin": 0.05,
+     "fallback": "playing"
+    }
+   },
+   "judge": "rule",
+   "review": {
+    "enabled": false
+   }
+  },
+  {
+   "id": "mole1",
+   "name": "Mole in hole 1",
+   "type": "class",
+   "description": "Brown fur above hole 1 (holes 1-3 top row, left to right). A bomb is black: not a mole.",
+   "classes": [
+    {
+     "value": "yes",
+     "name": "Yes",
+     "color": "red"
+    },
+    {
+     "value": "no",
+     "name": "No",
+     "color": "stone"
+    }
+   ],
+   "rois": [
+    {
+     "id": "above",
+     "name": "Above hole 1",
+     "box": [
+      300,
+      190,
+      120,
+      115
+     ]
+    }
+   ],
+   "source": {
+    "kind": "rule",
+    "rule": "color_ratio",
+    "params": {
+     "roi": "above",
+     "colors": [
+      {
+       "h": [
+        12,
+        24
+       ],
+       "s": [
+        130,
+        200
+       ],
+       "v": [
+        90,
+        185
+       ]
+      }
+     ],
+     "high_value": "yes",
+     "high_min": 0.12,
+     "low_value": "no",
+     "low_max": 0.04
+    }
+   },
+   "judge": "rule",
+   "review": {
+    "enabled": false
+   }
+  },
+  {
+   "id": "mole2",
+   "name": "Mole in hole 2",
+   "type": "class",
+   "description": "Brown fur above hole 2 (holes 1-3 top row, left to right). A bomb is black: not a mole.",
+   "classes": [
+    {
+     "value": "yes",
+     "name": "Yes",
+     "color": "red"
+    },
+    {
+     "value": "no",
+     "name": "No",
+     "color": "stone"
+    }
+   ],
+   "rois": [
+    {
+     "id": "above",
+     "name": "Above hole 2",
+     "box": [
+      580,
+      190,
+      120,
+      115
+     ]
+    }
+   ],
+   "source": {
+    "kind": "rule",
+    "rule": "color_ratio",
+    "params": {
+     "roi": "above",
+     "colors": [
+      {
+       "h": [
+        12,
+        24
+       ],
+       "s": [
+        130,
+        200
+       ],
+       "v": [
+        90,
+        185
+       ]
+      }
+     ],
+     "high_value": "yes",
+     "high_min": 0.12,
+     "low_value": "no",
+     "low_max": 0.04
+    }
+   },
+   "judge": "rule",
+   "review": {
+    "enabled": false
+   }
+  },
+  {
+   "id": "mole3",
+   "name": "Mole in hole 3",
+   "type": "class",
+   "description": "Brown fur above hole 3 (holes 1-3 top row, left to right). A bomb is black: not a mole.",
+   "classes": [
+    {
+     "value": "yes",
+     "name": "Yes",
+     "color": "red"
+    },
+    {
+     "value": "no",
+     "name": "No",
+     "color": "stone"
+    }
+   ],
+   "rois": [
+    {
+     "id": "above",
+     "name": "Above hole 3",
+     "box": [
+      860,
+      190,
+      120,
+      115
+     ]
+    }
+   ],
+   "source": {
+    "kind": "rule",
+    "rule": "color_ratio",
+    "params": {
+     "roi": "above",
+     "colors": [
+      {
+       "h": [
+        12,
+        24
+       ],
+       "s": [
+        130,
+        200
+       ],
+       "v": [
+        90,
+        185
+       ]
+      }
+     ],
+     "high_value": "yes",
+     "high_min": 0.12,
+     "low_value": "no",
+     "low_max": 0.04
+    }
+   },
+   "judge": "rule",
+   "review": {
+    "enabled": false
+   }
+  },
+  {
+   "id": "mole4",
+   "name": "Mole in hole 4",
+   "type": "class",
+   "description": "Brown fur above hole 4 (holes 1-3 top row, left to right). A bomb is black: not a mole.",
+   "classes": [
+    {
+     "value": "yes",
+     "name": "Yes",
+     "color": "red"
+    },
+    {
+     "value": "no",
+     "name": "No",
+     "color": "stone"
+    }
+   ],
+   "rois": [
+    {
+     "id": "above",
+     "name": "Above hole 4",
+     "box": [
+      300,
+      345,
+      120,
+      115
+     ]
+    }
+   ],
+   "source": {
+    "kind": "rule",
+    "rule": "color_ratio",
+    "params": {
+     "roi": "above",
+     "colors": [
+      {
+       "h": [
+        12,
+        24
+       ],
+       "s": [
+        130,
+        200
+       ],
+       "v": [
+        90,
+        185
+       ]
+      }
+     ],
+     "high_value": "yes",
+     "high_min": 0.12,
+     "low_value": "no",
+     "low_max": 0.04
+    }
+   },
+   "judge": "rule",
+   "review": {
+    "enabled": false
+   }
+  },
+  {
+   "id": "mole5",
+   "name": "Mole in hole 5",
+   "type": "class",
+   "description": "Brown fur above hole 5 (holes 1-3 top row, left to right). A bomb is black: not a mole.",
+   "classes": [
+    {
+     "value": "yes",
+     "name": "Yes",
+     "color": "red"
+    },
+    {
+     "value": "no",
+     "name": "No",
+     "color": "stone"
+    }
+   ],
+   "rois": [
+    {
+     "id": "above",
+     "name": "Above hole 5",
+     "box": [
+      580,
+      345,
+      120,
+      115
+     ]
+    }
+   ],
+   "source": {
+    "kind": "rule",
+    "rule": "color_ratio",
+    "params": {
+     "roi": "above",
+     "colors": [
+      {
+       "h": [
+        12,
+        24
+       ],
+       "s": [
+        130,
+        200
+       ],
+       "v": [
+        90,
+        185
+       ]
+      }
+     ],
+     "high_value": "yes",
+     "high_min": 0.12,
+     "low_value": "no",
+     "low_max": 0.04
+    }
+   },
+   "judge": "rule",
+   "review": {
+    "enabled": false
+   }
+  },
+  {
+   "id": "mole6",
+   "name": "Mole in hole 6",
+   "type": "class",
+   "description": "Brown fur above hole 6 (holes 1-3 top row, left to right). A bomb is black: not a mole.",
+   "classes": [
+    {
+     "value": "yes",
+     "name": "Yes",
+     "color": "red"
+    },
+    {
+     "value": "no",
+     "name": "No",
+     "color": "stone"
+    }
+   ],
+   "rois": [
+    {
+     "id": "above",
+     "name": "Above hole 6",
+     "box": [
+      860,
+      345,
+      120,
+      115
+     ]
+    }
+   ],
+   "source": {
+    "kind": "rule",
+    "rule": "color_ratio",
+    "params": {
+     "roi": "above",
+     "colors": [
+      {
+       "h": [
+        12,
+        24
+       ],
+       "s": [
+        130,
+        200
+       ],
+       "v": [
+        90,
+        185
+       ]
+      }
+     ],
+     "high_value": "yes",
+     "high_min": 0.12,
+     "low_value": "no",
+     "low_max": 0.04
+    }
+   },
+   "judge": "rule",
+   "review": {
+    "enabled": false
+   }
+  },
+  {
+   "id": "mole7",
+   "name": "Mole in hole 7",
+   "type": "class",
+   "description": "Brown fur above hole 7 (holes 1-3 top row, left to right). A bomb is black: not a mole.",
+   "classes": [
+    {
+     "value": "yes",
+     "name": "Yes",
+     "color": "red"
+    },
+    {
+     "value": "no",
+     "name": "No",
+     "color": "stone"
+    }
+   ],
+   "rois": [
+    {
+     "id": "above",
+     "name": "Above hole 7",
+     "box": [
+      300,
+      500,
+      120,
+      115
+     ]
+    }
+   ],
+   "source": {
+    "kind": "rule",
+    "rule": "color_ratio",
+    "params": {
+     "roi": "above",
+     "colors": [
+      {
+       "h": [
+        12,
+        24
+       ],
+       "s": [
+        130,
+        200
+       ],
+       "v": [
+        90,
+        185
+       ]
+      }
+     ],
+     "high_value": "yes",
+     "high_min": 0.12,
+     "low_value": "no",
+     "low_max": 0.04
+    }
+   },
+   "judge": "rule",
+   "review": {
+    "enabled": false
+   }
+  },
+  {
+   "id": "mole8",
+   "name": "Mole in hole 8",
+   "type": "class",
+   "description": "Brown fur above hole 8 (holes 1-3 top row, left to right). A bomb is black: not a mole.",
+   "classes": [
+    {
+     "value": "yes",
+     "name": "Yes",
+     "color": "red"
+    },
+    {
+     "value": "no",
+     "name": "No",
+     "color": "stone"
+    }
+   ],
+   "rois": [
+    {
+     "id": "above",
+     "name": "Above hole 8",
+     "box": [
+      580,
+      500,
+      120,
+      115
+     ]
+    }
+   ],
+   "source": {
+    "kind": "rule",
+    "rule": "color_ratio",
+    "params": {
+     "roi": "above",
+     "colors": [
+      {
+       "h": [
+        12,
+        24
+       ],
+       "s": [
+        130,
+        200
+       ],
+       "v": [
+        90,
+        185
+       ]
+      }
+     ],
+     "high_value": "yes",
+     "high_min": 0.12,
+     "low_value": "no",
+     "low_max": 0.04
+    }
+   },
+   "judge": "rule",
+   "review": {
+    "enabled": false
+   }
+  },
+  {
+   "id": "mole9",
+   "name": "Mole in hole 9",
+   "type": "class",
+   "description": "Brown fur above hole 9 (holes 1-3 top row, left to right). A bomb is black: not a mole.",
+   "classes": [
+    {
+     "value": "yes",
+     "name": "Yes",
+     "color": "red"
+    },
+    {
+     "value": "no",
+     "name": "No",
+     "color": "stone"
+    }
+   ],
+   "rois": [
+    {
+     "id": "above",
+     "name": "Above hole 9",
+     "box": [
+      860,
+      500,
+      120,
+      115
+     ]
+    }
+   ],
+   "source": {
+    "kind": "rule",
+    "rule": "color_ratio",
+    "params": {
+     "roi": "above",
+     "colors": [
+      {
+       "h": [
+        12,
+        24
+       ],
+       "s": [
+        130,
+        200
+       ],
+       "v": [
+        90,
+        185
+       ]
+      }
+     ],
+     "high_value": "yes",
+     "high_min": 0.12,
+     "low_value": "no",
+     "low_max": 0.04
+    }
+   },
+   "judge": "rule",
+   "review": {
+    "enabled": false
+   }
+  },
+  {
+   "id": "final_score",
+   "name": "Final score",
+   "type": "number",
+   "description": "The score on the TIME UP card.",
+   "min": 0,
+   "max": 999,
+   "rois": [
+    {
+     "id": "value",
+     "name": "Score on the card",
+     "box": [
+      700,
+      262,
+      170,
+      40
+     ]
+    }
+   ],
+   "source": {
+    "kind": "rule",
+    "rule": "digits",
+    "params": {
+     "roi": "value",
+     "colors": [
+      {
+       "h": [
+        0,
+        255
+       ],
+       "s": [
+        0,
+        255
+       ],
+       "v": [
+        0,
+        90
+       ]
+      }
+     ],
+     "part": "all"
+    }
+   },
+   "judge": "rule",
+   "review": {
+    "enabled": false
+   }
+  }
+ ]
+}
