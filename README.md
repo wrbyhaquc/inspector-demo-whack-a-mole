@@ -39,14 +39,14 @@ pack's run settings) and this repository.
 1. **Start the game.** `python game/window.py`. It may sit behind other windows, but **do not minimise it**: a
    minimised window has no picture.
 2. **Start Inspector.** `start.bat` (or `python -m server`) in the Inspector folder; it opens http://127.0.0.1:8765.
-3. **Install the pack.** **Packs › Install or upgrade**, choose `pack/releases/whack-a-mole-1.0.0.zip`
-   (`whack-a-mole-zh-1.0.0.zip` for the Chinese one) and let it become the running pack; restart Inspector when it
-   asks. From a command line instead: `python -m project.pack install pack/releases/whack-a-mole-1.0.0.zip --activate`
+3. **Install the pack.** **Packs › Install or upgrade**, choose `pack/releases/whack-a-mole-1.0.1.zip`
+   (`whack-a-mole-zh-1.0.1.zip` for the Chinese one) and let it become the running pack; restart Inspector when it
+   asks. From a command line instead: `python -m project.pack install pack/releases/whack-a-mole-1.0.1.zip --activate`
    in the Inspector folder, then start it.
 4. **Check the source.** **Sources** shows *Whack-a-mole game*: the pack brings the window's title, so nothing has to
    be picked.
-5. **Run.** **Run › Start**. The pack asks to look every 300 ms and allows up to 60 clicks a minute (Inspector's
-   safety limit, 12 by default); the Run page shows both, and what you set there wins. No model: every state is
+5. **Run.** **Run › Start**. The pack asks to look every 300 ms, to act on the first look and allows up to 60 clicks a minute (Inspector's
+   safety limit, 12 by default); the Run page shows the interval and the click limit, and what you set there wins. No model: every state is
    judged by screen rules.
 6. **Watch.** Two seconds on the title screen and Inspector presses START; then it plays. The **operation panel**
    (**Operation panel ↗**) has *Start a round*, *Stop* and *Keep playing* (a new round by itself after time up), and
@@ -59,15 +59,16 @@ pack's run settings) and this repository.
 | | |
 |---|---|
 | Source | `MOLE-GAME`: the game's window ("App window"), found by its title, clicked in the background (`project.json` "sources") |
-| Run settings | look every 0.3 s, up to 60 clicks a minute (`project.json` "run"; this computer's settings win) |
+| Run settings | look every 0.3 s, act on the first look, up to 60 clicks a minute (`project.json` "run": `interval`, `confirm`, `max_per_min`; this computer's settings win) |
 | States | `screen` (the START / PLAY AGAIN button, reference pictures; neither = playing), `mole1` .. `mole9` (brown fur above each hole; a bomb is black, so it is never a mole), `final_score` (read digits on the card) - `pack/states.json`, the taught references in `pack/refs/` |
 | Buttons | `hole_1` .. `hole_9`, `start`, `again`: where to click |
 | Main script | *Mole hunter*: a mole in a hole → click that hole; the title → START; time up → tell the score, PLAY AGAIN (both only while *Keep playing* is on) |
 | Setting | *Keep playing* |
 | Operation panel | the game and how it is going, start a round, stop, keep playing, notifications |
 
-A round played by Inspector: about 40 moles hit, none missed, no bomb hit, a reaction of about 0.55 s (looking every
-0.3 s, and a decision is only taken when two looks agree - Inspector is built to be sure rather than quick).
+A round played by Inspector: about 40 moles hit, none missed, no bomb hit, a reaction of about 0.3 s - it looks every
+0.3 s and acts on the first look, because the pack says so (`"confirm": 1`). By default Inspector waits for two looks
+that agree and averages its model over a few: built to be sure rather than quick, for scenes that run unattended.
 
 `pack/build.py` makes the pack through Inspector's own API (`--lang en` or `zh-TW`), and `python -m project.pack export`
 (in the Inspector folder) turns it into the zip in `pack/releases/`. `tools/teach_refs.py` makes the reference pictures

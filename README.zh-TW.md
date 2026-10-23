@@ -32,10 +32,10 @@ python game/window.py           # 開出一個「Whack-a-Mole - Inspector demo�
 
 1. **啟動遊戲。** `python game/window.py`。視窗可以被別的視窗擋住,但**不要縮到最小**:縮到最小的視窗拿不到畫面。
 2. **啟動 Inspector。** 在 Inspector 資料夾執行 `start.bat`(或 `python -m server`),會打開 http://127.0.0.1:8765。
-3. **安裝方案包。** **方案包 › 安裝或升級**,選 `pack/releases/whack-a-mole-zh-1.0.0.zip`(英文版是 `whack-a-mole-1.0.0.zip`),並設成執行中的方案包;依提示重新啟動 Inspector。
-   也可以用指令:在 Inspector 資料夾執行 `python -m project.pack install pack/releases/whack-a-mole-zh-1.0.0.zip --activate`,再啟動。
+3. **安裝方案包。** **方案包 › 安裝或升級**,選 `pack/releases/whack-a-mole-zh-1.0.1.zip`(英文版是 `whack-a-mole-1.0.1.zip`),並設成執行中的方案包;依提示重新啟動 Inspector。
+   也可以用指令:在 Inspector 資料夾執行 `python -m project.pack install pack/releases/whack-a-mole-zh-1.0.1.zip --activate`,再啟動。
 4. **確認來源。** **來源** 頁會有「打地鼠遊戲」:方案包已經帶好視窗標題,不用自己挑。
-5. **開始執行。** **執行 › 開始**。方案包要求每 300 毫秒看一次、每分鐘最多點 60 次(Inspector 的安全上限,預設 12 次);執行頁上看得到這兩個值,你在那裡改的會優先。不需要模型:每個狀態都用畫面規則判斷。
+5. **開始執行。** **執行 › 開始**。方案包要求每 300 毫秒看一次、看到一次就動作、每分鐘最多點 60 次(Inspector 的安全上限,預設 12 次);執行頁上看得到間隔和點擊上限,你在那裡改的會優先。不需要模型:每個狀態都用畫面規則判斷。
 6. **看它玩。** 開始畫面停兩秒後 Inspector 會按 START,接著開始打。**操作面板**(**操作面板(給使用者) ↗**)有「開始一局」、「停下來」、「一直玩下去」(時間到後自己開始下一局),也看得到每一局的分數。
 
 ![操作面板](docs/panel.zh-TW.png)
@@ -45,14 +45,14 @@ python game/window.py           # 開出一個「Whack-a-Mole - Inspector demo�
 | | |
 |---|---|
 | 來源 | `MOLE-GAME`:遊戲的視窗(「應用程式視窗」),用標題找到,在背景點擊(`project.json` 的 "sources") |
-| 執行設定 | 每 0.3 秒看一次、每分鐘最多點 60 次(`project.json` 的 "run";這台電腦上的設定優先) |
+| 執行設定 | 每 0.3 秒看一次、看到一次就動作、每分鐘最多點 60 次(`project.json` 的 "run":`interval`、`confirm`、`max_per_min`;這台電腦上的設定優先) |
 | 狀態 | `screen`(START / PLAY AGAIN 按鈕,參考圖比對;兩個都沒有 = 遊戲中)、`mole1` ~ `mole9`(每個洞上方的棕色毛;炸彈是黑色,永遠不會被當成地鼠)、`final_score`(讀成績卡上的數字):`pack/states.json`,教好的參考圖在 `pack/refs/` |
 | 按鈕 | `hole_1` ~ `hole_9`、`start`、`again`:要點的位置 |
 | 主腳本 | 「地鼠獵人」:哪個洞有地鼠 → 點那個洞;開始畫面 → 按 START;時間到 → 回報分數、按 PLAY AGAIN(後兩項只在「一直玩下去」打開時) |
 | 使用者設定 | 一直玩下去 |
 | 操作面板 | 遊戲現況、開始一局、停下來、一直玩下去、通知 |
 
-Inspector 玩一局的成績:大約打中 40 隻,沒有漏掉,沒有誤打炸彈,反應時間約 0.55 秒(每 0.3 秒看一次,而且要連續兩次看到一樣才動作:Inspector 的設計是寧可確定,不求最快)。
+Inspector 玩一局的成績:大約打中 40 隻,沒有漏掉,沒有誤打炸彈,反應時間約 0.3 秒:每 0.3 秒看一次,而且看到一次就動作,這是方案包自己的設定(`"confirm": 1`)。Inspector 預設要連續兩次看到一樣才動作,模型也會和前幾次平均:寧可確定、不求最快,適合無人看管的場景。
 
 `pack/build.py` 透過 Inspector 自己的 API 做出這個方案包(`--lang en` 或 `zh-TW`),再用 `python -m project.pack export`(在 Inspector 資料夾)變成 `pack/releases/` 裡的 zip。
 `tools/teach_refs.py` 用遊戲的畫面產生參考圖;`tools/check_states.py` 用遊戲的各種畫面檢查每個狀態(17,100 個答案,沒有錯);`tools/record_gif.py` 錄製動畫。

@@ -6,7 +6,8 @@ Inspector when it is saved), in English or Traditional Chinese.
 
 What it makes (the ids are the same in both languages; only the words differ):
   source        MOLE-GAME: the game's window ("App window"), clicked in the background (project.json "sources")
-  run           look every 0.3 s, up to 60 clicks a minute (project.json "run"; this computer's settings win)
+  run           look every 0.3 s, up to 60 clicks a minute, act on the first look (project.json "run"; this
+                computer's settings win)
   states        pack/states.json - which screen it is, a mole in each of the nine holes, the final score; all
                 judged by screen rules (no training); the references they need come from pack/refs/
   buttons       hole_1 .. hole_9, start, again: where to click
@@ -171,8 +172,9 @@ def main():
         pj = json.load(open(p, encoding="utf-8"))
         pj.update({"name": t["project"][0], "description": t["project"][1], "words": t["project"][2],
                    "screen": {"width": 1280, "height": 720}, "plugins": [],
-                   # a fast game: look every 0.3 s, up to 60 clicks a minute (Inspector: project.json "run")
-                   "run": {"interval": 0.3, "max_per_min": 60},
+                   # a fast game: look every 0.3 s, up to 60 clicks a minute, act on the first look
+                   # (Inspector: project.json "run")
+                   "run": {"interval": 0.3, "max_per_min": 60, "confirm": 1},
                    # the window this pack watches, made so on a new computer (Inspector: project.json "sources")
                    "sources": {SRC: {"kind": "window/any", "name": t["source"],
                                      "params": {"title": TITLE, "title_mode": "exact", "fit": "contain"}}}})
