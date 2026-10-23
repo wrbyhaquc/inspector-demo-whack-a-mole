@@ -28,12 +28,12 @@ python game/window.py           # 開出一個「Whack-a-Mole - Inspector demo�
 
 ## 10 分鐘試用
 
-需要先裝好 [Inspector](https://github.com/wrbyhaquc/inspector)(Runtime 版就夠:不用 PyTorch,也不用訓練模型;要 2026 年 10 月 23 日以後的版本:舊版擷取視窗時會被標題列推歪,也不認得方案包的執行設定),再加上這個 repo。
+需要先裝好 [Inspector](https://github.com/wrbyhaquc/inspector)(Runtime 版就夠:不用 PyTorch,也不用訓練模型;要 0.2.0 以後的版本:舊版擷取視窗時會被標題列推歪,也不認得方案包的執行設定),再加上這個 repo。
 
 1. **啟動遊戲。** `python game/window.py`。視窗可以被別的視窗擋住,但**不要縮到最小**:縮到最小的視窗拿不到畫面。
 2. **啟動 Inspector。** 在 Inspector 資料夾執行 `start.bat`(或 `python -m server`),會打開 http://127.0.0.1:8765。
-3. **安裝方案包。** **方案包 › 安裝或升級**,選 `pack/releases/whack-a-mole-zh-1.0.1.zip`(英文版是 `whack-a-mole-1.0.1.zip`),並設成執行中的方案包;依提示重新啟動 Inspector。
-   也可以用指令:在 Inspector 資料夾執行 `python -m project.pack install pack/releases/whack-a-mole-zh-1.0.1.zip --activate`,再啟動。
+3. **安裝方案包。** **方案包 › 安裝或升級**,選 `pack/releases/whack-a-mole-zh-1.0.2.zip`(英文版是 `whack-a-mole-1.0.2.zip`),並設成執行中的方案包;依提示重新啟動 Inspector。
+   也可以用指令:在 Inspector 資料夾執行 `python -m project.pack install pack/releases/whack-a-mole-zh-1.0.2.zip --activate`,再啟動。
 4. **確認來源。** **來源** 頁會有「打地鼠遊戲」:方案包已經帶好視窗標題,不用自己挑。
 5. **開始執行。** **執行 › 開始**。方案包要求每 300 毫秒看一次、看到一次就動作、每分鐘最多點 60 次(Inspector 的安全上限,預設 12 次);執行頁上看得到間隔和點擊上限,你在那裡改的會優先。不需要模型:每個狀態都用畫面規則判斷。
 6. **看它玩。** 開始畫面停兩秒後 Inspector 會按 START,接著開始打。**操作面板**(**操作面板(給使用者) ↗**)有「開始一局」、「停下來」、「一直玩下去」(時間到後自己開始下一局),也看得到每一局的分數。
